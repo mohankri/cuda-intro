@@ -22,13 +22,17 @@ SMP Count on 1 GPU (SMP Count 72)
 ```
 Number of Block per SMP (Max Block per SMP 16)
 ```
-<img width="1212" height="892" alt="image" src="https://github.com/user-attachments/assets/afe10810-8f89-46ed-a491-26184e163865" />
+<img width="1190" height="596" alt="image" src="https://github.com/user-attachments/assets/ae203918-7ab2-4add-9363-dbdceda718de" />
+
 
 ```
-Number of Warp per thread Block (Warp size 32)
+Number of Warp per SMP (Warp size 48)
 ```
-<img width="1190" height="822" alt="image" src="https://github.com/user-attachments/assets/82d6c2c4-427a-488a-94a5-404b9a415952" />
+<img width="1190" height="666" alt="image" src="https://github.com/user-attachments/assets/766df967-378e-44a4-b635-1ca7db373348" />
+
 
 ```
-Number of thread 
+1 Wrap Slot(Number of threads per Warp or Warp size: 32)
 ```
+<img width="1190" height="578" alt="image" src="https://github.com/user-attachments/assets/beeba8db-e655-433c-87a1-39e7d56b132d" />
+
