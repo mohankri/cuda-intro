@@ -36,3 +36,12 @@ Number of Warp per SMP (Warp size 48)
 ```
 <img width="1190" height="578" alt="image" src="https://github.com/user-attachments/assets/beeba8db-e655-433c-87a1-39e7d56b132d" />
 
+```
+Kernel Launch <<<1, 1024>>>
+```
+<img width="1190" height="980" alt="image" src="https://github.com/user-attachments/assets/2e78ff0f-4271-4b7a-a1f6-e1d6dd61b885" />
+
+```
+Kernel Launch <<< 72, 1024>>>
+```
+<img width="1190" height="980" alt="image" src="https://github.com/user-attachments/assets/8b1ff4c7-221f-4662-a1e8-b85bb916c4d2" />
