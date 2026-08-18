@@ -27,6 +27,7 @@ Number of Block per SMP (Max Block per SMP 16)
 
 ```
 Number of Warp per SMP (Warp size 48)
+Most of the GPU has 4 wrap scheduler per SMP.
 ```
 <img width="1190" height="666" alt="image" src="https://github.com/user-attachments/assets/766df967-378e-44a4-b635-1ca7db373348" />
 
