@@ -10,14 +10,14 @@ Number of Device 1
  Register per SM 65536
  Shared Memory per SM 102400
  Shared Memory per Block 101376
- Warp size 32
+ Warp size (Number of threads per Warp) 32
  Clock Rate 1.695
  Warp Capacity 48
 ```
 ```
 SMP Count on 1 GPU (SMP Count 72)
 ```
-<img width="844" height="472" alt="image" src="https://github.com/user-attachments/assets/f84e1ccb-5a0d-4610-b561-9e946193b7c1" />
+<img width="1190" height="630" alt="image" src="https://github.com/user-attachments/assets/7af24622-5355-4168-807c-eaee6100d5af" />
 
 ```
 Number of Block per SMP (Max Block per SMP 16)
