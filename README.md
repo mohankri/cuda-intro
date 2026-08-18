@@ -46,3 +46,10 @@ Kernel Launch <<<1, 1024>>>
 Kernel Launch <<< 72, 1024>>>
 ```
 <img width="1190" height="980" alt="image" src="https://github.com/user-attachments/assets/8b1ff4c7-221f-4662-a1e8-b85bb916c4d2" />
+
+```
+Kernel Launch <<< 1, 64>>>
+will use 1 SM and 2 wrap (32 threads each)
+```
+<img width="1190" height="946" alt="image" src="https://github.com/user-attachments/assets/f49154c2-41ed-46f9-932c-a0485fbe6eca" />
+
