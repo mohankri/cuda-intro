@@ -1,4 +1,9 @@
 ```
+SW/HW mapping
+```
+<img width="1472" height="800" alt="image" src="https://github.com/user-attachments/assets/8bb95267-c7ac-4503-bc08-7b6d203b2b7a" />
+
+```
 $ nvcc hello.cu -o hello -lcudart -lnccl
 
 $ ~/cuda-intro$ ./hello
