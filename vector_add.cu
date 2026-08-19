@@ -1,3 +1,12 @@
+/*
+ * Vector Addition using CUDA
+ * 
+ * This program demonstrates basic CUDA programming by performing element-wise
+ * addition of two arrays on the GPU. It allocates memory on the GPU, copies
+ * input arrays from host to device, launches a parallel kernel to compute
+ * the sum, and copies the result back to the host for display.
+ */
+
 #include <stdio.h>
 #include <cuda_runtime.h>
 
