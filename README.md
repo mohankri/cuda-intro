@@ -85,3 +85,15 @@ Kernel Launch <<<256, 512>>>
 
 <img width="1472" height="960" alt="image" src="https://github.com/user-attachments/assets/9ce54bed-1599-4cb2-884b-d6aadc095889" />
 
+```
+Basic understanding of
+blockDim.x, blockId.x and threadIdx.x
+
+```
+<img width="1220" height="394" alt="image" src="https://github.com/user-attachments/assets/485a5afc-0074-4736-9376-d81439b36739" />
+
+```
+Basic understanding of
+blockDim.y, blockId.y and threadIdx.y
+```
+<img width="1472" height="1400" alt="image" src="https://github.com/user-attachments/assets/87394913-5e36-4ac5-ae02-f6b493469f0d" />
