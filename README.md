@@ -58,3 +58,30 @@ will use 1 SM and 2 wrap (32 threads each)
 ```
 <img width="1190" height="946" alt="image" src="https://github.com/user-attachments/assets/f49154c2-41ed-46f9-932c-a0485fbe6eca" />
 
+```
+Kernel Launch <<<256, 512>>>
+
+## Occupancy accounting: `<<<256, 512>>>` on NVIDIA A10 (sm_86)
+
+| Level               | Count   | Derivation                                    |
+|---------------------|---------|-----------------------------------------------|
+| Total threads       | 131,072 | 256 blocks × 512 threads                      |
+| Total warps         | 4,096   | 131,072 / 32                                  |
+| Warps per block     | 16      | 512 / 32                                      |
+| Blocks per SM       | 3       | ⌊1536 / 512⌋ — thread limit binds             |
+| Warps per SM        | 48      | 3 × 16 = SM max → 100% theoretical occupancy  |
+| Warps per scheduler | 12      | 48 / 4 sub-partitions                         |
+| Waves               | ~1.19   | 256 / (72 SMs × 3 blocks)                     |
+
+### Resource thresholds to sustain 3 blocks/SM
+
+| Resource       | SM pool  | Threshold per block      | If exceeded          |
+|----------------|----------|--------------------------|----------------------|
+| Registers      | 65,536   | ≤ 42 regs/thread         | 2 blocks → 66% occ.  |
+| Shared memory  | 102,400 B| ≤ ~33 KB                 | 2 blocks → 66% occ.  |
+| Block slots    | 16       | n/a (3 ≪ 16)             | not binding          |
+
+```
+
+<img width="1472" height="960" alt="image" src="https://github.com/user-attachments/assets/9ce54bed-1599-4cb2-884b-d6aadc095889" />
+
