@@ -97,3 +97,37 @@ Basic understanding of
 blockDim.y, blockId.y and threadIdx.y
 ```
 <img width="1472" height="1400" alt="image" src="https://github.com/user-attachments/assets/87394913-5e36-4ac5-ae02-f6b493469f0d" />
+
+## NVIDIA GPU topology
+
+Captured with `nvidia-smi topo -m` on four NVIDIA GB300 GPUs. Every GPU pair is connected by `NV18`.
+
+```mermaid
+graph TD
+	CPU0[CPU NUMA 0<br/>CPU affinity 0-71]
+	CPU1[CPU NUMA 1<br/>CPU affinity 72-143]
+
+	subgraph N0[GPU NUMA locality]
+		GPU0[GPU0<br/>GPU NUMA 2]
+		GPU1[GPU1<br/>GPU NUMA 10]
+	end
+
+	subgraph N1[GPU NUMA locality]
+		GPU2[GPU2<br/>GPU NUMA 18]
+		GPU3[GPU3<br/>GPU NUMA 26]
+	end
+
+	CPU0 -. CPU affinity .- GPU0
+	CPU0 -. CPU affinity .- GPU1
+	CPU1 -. CPU affinity .- GPU2
+	CPU1 -. CPU affinity .- GPU3
+
+	GPU0 ---|NV18| GPU1
+	GPU0 ---|NV18| GPU2
+	GPU0 ---|NV18| GPU3
+	GPU1 ---|NV18| GPU2
+	GPU1 ---|NV18| GPU3
+	GPU2 ---|NV18| GPU3
+```
+
+`NV18` means a bonded set of 18 NVLinks. `X` on the `nvidia-smi topo -m` diagonal is the GPU's self-connection.
