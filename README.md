@@ -31,14 +31,14 @@ Number of Block per SMP (Max Block per SMP 16)
 
 
 ```
-Number of Warp per SMP (Warp size 48)
-Most of the GPU has 4 wrap scheduler per SMP.
+Number of warps per SM (warp capacity 48)
+Most GPUs have four warp schedulers per SM.
 ```
 <img width="1190" height="666" alt="image" src="https://github.com/user-attachments/assets/766df967-378e-44a4-b635-1ca7db373348" />
 
 
 ```
-1 Wrap Slot(Number of threads per Warp or Warp size: 32)
+1 Warp Slot (number of threads per warp: 32)
 ```
 <img width="1190" height="578" alt="image" src="https://github.com/user-attachments/assets/beeba8db-e655-433c-87a1-39e7d56b132d" />
 
@@ -54,7 +54,7 @@ Kernel Launch <<< 72, 1024>>>
 
 ```
 Kernel Launch <<< 1, 64>>>
-will use 1 SM and 2 wrap (32 threads each)
+will use 1 SM and 2 warps (32 threads each)
 ```
 <img width="1190" height="946" alt="image" src="https://github.com/user-attachments/assets/f49154c2-41ed-46f9-932c-a0485fbe6eca" />
 
