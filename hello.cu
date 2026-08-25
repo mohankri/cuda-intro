@@ -11,21 +11,33 @@ static int attr(int dev, cudaDeviceAttr a) {
 }
 
 __global__ void probe(unsigned* blockSm) {
-
+    if (threadIdx.x == 0) {
+        blockSm[blockIdx.x] = static_cast<unsigned>(blockIdx.x);
+    }
 }
 
 static void tryLaunch(int grid, int block) {
     printf("<<<%d, %d>>>  ", grid, block);
-    unsigned * dSm = nullptr;
+    unsigned *dSm = nullptr;
+    cudaError_t allocationErr = cudaMalloc(&dSm, grid * sizeof(*dSm));
+    if (allocationErr != cudaSuccess) {
+        cout << "Allocation failed: " << cudaGetErrorString(allocationErr) << endl;
+        return;
+    }
 
     probe<<<grid, block>>>(dSm);
     cudaError_t launchErr = cudaGetLastError();      // launch-time legality
     if (launchErr != cudaSuccess) {
-        cout << "Launch failed " << block << " " << endl;
+        cout << "Launch failed: " << cudaGetErrorString(launchErr) << endl;
     } else {
-        cout << "Launch Sucess " << block << " " << endl;
+        cudaError_t executionErr = cudaDeviceSynchronize();
+        if (executionErr != cudaSuccess) {
+            cout << "Execution failed: " << cudaGetErrorString(executionErr) << endl;
+        } else {
+            cout << "Launch succeeded" << endl;
+        }
     }
-    return;
+    cudaFree(dSm);
 }
 
 int
