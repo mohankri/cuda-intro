@@ -21,27 +21,27 @@ wrapped in `ncclGroupStart()` and `ncclGroupEnd()`. This lets NCCL coordinate
 the launches as a single grouped operation.
 
 ```mermaid
-flowchart TD
-    H[Host thread]
-    D[Discover GPU count]
-    C[ncclCommInitAll<br/>Create communicator per GPU]
-    B[Allocate one device buffer<br/>and CUDA stream per GPU]
-    I[Initialize local values<br/>GPU 0 = 1, GPU 1 = 2, ...]
-    GS[ncclGroupStart]
-    A[ncclAllReduce on every rank<br/>in-place deviceValues[rank]]
-    GE[ncclGroupEnd]
-    T[NCCL transport selection<br/>topology-aware rings or trees]
-    RS[Logical reduction phase<br/>combine values across GPUs]
-    AG[Logical distribution phase<br/>make the final sum available on every GPU]
-    S[cudaStreamSynchronize<br/>wait for NCCL work]
-    Q[Copy one result per GPU<br/>device to host]
-    V[Verify expected sum<br/>and release resources]
+graph TD
+  H["Host thread"]
+  D["Discover GPU count"]
+  C["ncclCommInitAll<br/>Create communicator per GPU"]
+  B["Allocate one device buffer<br/>and CUDA stream per GPU"]
+  I["Initialize local values<br/>GPU 0 = 1, GPU 1 = 2, ..."]
+  GS["ncclGroupStart"]
+  A["ncclAllReduce on every rank<br/>in-place device buffer"]
+  GE["ncclGroupEnd"]
+  T["NCCL transport selection<br/>topology-aware rings or trees"]
+  RS["Logical reduction phase<br/>combine values across GPUs"]
+  AG["Logical distribution phase<br/>make the final sum available on every GPU"]
+  S["cudaStreamSynchronize<br/>wait for NCCL work"]
+  Q["Copy one result per GPU<br/>device to host"]
+  V["Verify expected sum<br/>and release resources"]
 
     H --> D --> C --> B --> I --> GS --> A --> GE
     GE --> T --> RS --> AG --> S --> Q --> V
-    A -. launches work on .-> S0[GPU 0 CUDA stream]
-    A -. launches work on .-> S1[GPU 1 CUDA stream]
-    A -. launches work on .-> SN[GPU N CUDA stream]
+    A -. launches work on .-> S0["GPU 0 CUDA stream"]
+    A -. launches work on .-> S1["GPU 1 CUDA stream"]
+    A -. launches work on .-> SN["GPU N CUDA stream"]
     S0 --> T
     S1 --> T
     SN --> T
